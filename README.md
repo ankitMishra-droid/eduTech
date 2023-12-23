@@ -1,0 +1,2 @@
+# eduTech
+nextjs application
