@@ -7,6 +7,9 @@ export async function DELETE(
     { params }: { params: { courseId: string, attachmentId: string }}
 ){
     try {
+
+        await db.$connect()
+
         const { userId } = auth()
         
         if(!userId){
