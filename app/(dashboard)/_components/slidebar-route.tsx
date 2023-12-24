@@ -17,7 +17,7 @@ const guestRoute = [
     },
     {
         icon: Book,
-        label: 'Browse',
+        label: 'Courses',
         href: '/teacher/courses'
     }
 ];
