@@ -10,6 +10,8 @@ import man from "../../../assets/images/man.png"
 import women from "../../../assets/images/woman.png"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import SliderComponent from "../_components/slider-component";
+// import {OurTeam} from "../_components/our-team";
 
 export default function Home() {
   return (
@@ -76,11 +78,11 @@ export default function Home() {
     <div className="md:container lg:mt-32 mt-32">
       <h1 className="text-white text-center max-[340px]:mt-96 text-6xl">What <span className="text-orange-500"> We Offer <span><Image alt="Image" src={heroPara} className="m-auto lg:ml-auto" width={200}/></span> </span></h1>
         <div className="relative">
-          <div className="absolute -z-10 right-0 -mt-10">
+          <div className="absolute -z-10 right-0 mt-16">
             <Image src={circle} alt="circle" className=""/>
           </div>
         </div>
-        <div className="relative flex flex-row w-full">
+        <div className="relative flex flex-row w-full mt-28">
           <div className="flex flex-col lg:flex-row">
           {/* card 1 */}
             <figure className="relative text-white md:flex mt-10 lg:w-2/6 h-full bg-[#18171A] rounded-xl p-8 md:p-0 mr-10 ml-10 lg:mr-0 lg:ml-0 dark:bg-slate-800 max-[360px]:ml-1 max-[360px]:mr-1">
@@ -185,70 +187,19 @@ export default function Home() {
     </div>
     {/* what we offer section end */}
 
+
     {/* testimonial section start */}
 
-    <div className="mx-auto text-white flex-col md:container mt-32 md:mt-40 w-full p-6">
-      <h1 className="text-start text-white text-5xl md:text-6xl font-bold max-[340px]:text-4xl">Our <span className="text-orange-500">Testimonials<Image alt="Image" src={heroPara} className="md:ml-28 mt-1"/></span></h1>
-      <div className="mt-16">
-        <p className="font-normal text-base -mt-10">Join the ranks of happy customers who have found their perfect solution with us!</p>
-      </div>
-      <div className="w-full mt-20 flex justify-center align-bottom items-center flex-col lg:flex-row">
-        {/* card 1 */}
-        <div className="lg:w-1/2 lg:mr-5 mt-5">
-          <figure className="md:flex bg-white rounded-[27px] p-8 md:p-0 relative text-black min-[1024px]:h-96 min-[1230px]:h-64">
-            <div className="absolute left-0 top-0 hidden md:inline-block">
-              <Image src={halfCircle} alt="halfCircle" className="rounded-t-[27px] rounded-r-none" width={150} height={150}/>
-            </div>
-            <Image className="w-24 h-24 md:w-60 md:h-auto md:rounded-none rounded-full mx-auto z-10" src={man} alt="abhay"/>
-            <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
-              <blockquote>
-                <p className="text-lg font-medium pl-10 max-sm:pl-0 lg:pl-2">
-                &quot;A huge shoutout to my mentor for being my constant support and helping me navigate the ups and downs of life. I couldn&apos;t have asked for a better mentor.&quot;
-                </p>
-              </blockquote>
-              <figcaption className="font-medium pl-10 max-sm:pl-0 lg:pl-2">
-                <div className="text-black dark:text-black-400 text-xl font-bold">
-                  Abhay Bhagat
-                </div>
-                {/* <div className="text-slate-700 dark:text-slate-500">
-                  Staff Engineer, Algolia
-                </div> */}
-              </figcaption>
-            </div>
-          </figure>
-        </div>
-        {/* card 1 */}
+      <SliderComponent />
 
-        {/* card 2 */}
-        <div className="lg:w-1/2 lg:ml-5 mt-5">
-          <figure className="relative md:flex bg-white rounded-[27px] p-8 md:p-0 text-black min-[1024px]:h-96 min-[1230px]:h-64">
-          <div className="absolute left-0 top-0 hidden md:inline-block">
-              <Image src={halfCircle} alt="halfCircle" className="rounded-t-[27px] rounded-r-none" width={150} height={150}/>
-            </div>
-            <Image className="w-24 h-24 md:w-60 md:h-auto md:rounded-none rounded-full mx-auto z-10" src={women} alt="" />
-            <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
-              <blockquote>
-                <p className="text-lg font-medium pl-10 lg:pl-2 max-sm:pl-0">
-                &quot;A huge shoutout to my mentor for being my constant support and helping me navigate the ups and downs of life. I couldn&apos;t have asked for a better mentor.&quot;
-                </p>
-              </blockquote>
-              <figcaption className="font-medium pl-10  lg:pl-2 max-sm:pl-0">
-                <div className="text-black dark:text-black-400 text-xl font-bold">
-                  Diksha Sharma
-                </div>
-                {/* <div className="text-slate-700 dark:text-slate-500">
-                  Staff Engineer, Algolia
-                </div> */}
-              </figcaption>
-            </div>
-          </figure>
-        </div>
-        {/* card 2 */}
-
-      </div>
-    </div>
     {/* testimonial section end */}
 
+
+    {/* Our Team Section start */}
+
+    {/* <OurTeam /> */}
+
+    {/* Our Team Section end */}
     </>
   )
 }
