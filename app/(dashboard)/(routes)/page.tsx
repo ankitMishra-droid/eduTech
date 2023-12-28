@@ -11,7 +11,9 @@ import women from "../../../assets/images/woman.png"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SliderComponent from "../_components/slider-component";
-// import {OurTeam} from "../_components/our-team";
+import BrandSlider from "../_components/brand-slider";
+import OurTeam from "../_components/grid";
+import FooterComponent from "../_components/footer";
 
 export default function Home() {
   return (
@@ -187,19 +189,18 @@ export default function Home() {
     </div>
     {/* what we offer section end */}
 
+    {/* testimonial section */}
+    <SliderComponent />
+    
+    {/* our team */}
+    <OurTeam />
 
-    {/* testimonial section start */}
+    {/* brand slider */}
+    <BrandSlider />
 
-      <SliderComponent />
+    {/* footer section */}
+    <FooterComponent />
 
-    {/* testimonial section end */}
-
-
-    {/* Our Team Section start */}
-
-    {/* <OurTeam /> */}
-
-    {/* Our Team Section end */}
     </>
   )
 }
