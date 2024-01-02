@@ -47,7 +47,7 @@ const CreatePage = () => {
         }
     }
     return(
-        <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
+        <div className="max-w-5xl text-white mx-auto flex md:items-center md:justify-center h-full p-6 md:container">
             <div>
                 <h1 className="text-2xl">
                     Name Your Course
@@ -69,6 +69,7 @@ const CreatePage = () => {
                                 </FormLabel>
                                 <FormControl>
                                     <Input 
+                                        className="text-slate-800 font-bold"
                                         disabled={isSubmitting}
                                         placeholder="e.g. 'Advance Web Development'"
                                         {...field}

@@ -55,10 +55,10 @@ const CourseIdPage = async({ params } : { params:{courseId: string} }) => {
     const completionText = `${completedFields}/${totalFields}`
 
     return(
-        <div className="p-6">
+        <div className="p-6 md:container">
             <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-y-2">
-                    <h1 className="text-2xl font-medium">
+                    <h1 className="text-2xl font-medium text-white">
                         Course Setup
                     </h1>
                     <span className="text-sm text-slate-700">
@@ -70,7 +70,7 @@ const CourseIdPage = async({ params } : { params:{courseId: string} }) => {
                 <div>
                     <div className="flex items-center gap-x-2">
                         <IconBadge icon={LayoutDashboardIcon}/>
-                        <h2 className="text-xl">
+                        <h2 className="text-xl text-white">
                             Customize Your Course
                         </h2>
                     </div>
@@ -99,18 +99,18 @@ const CourseIdPage = async({ params } : { params:{courseId: string} }) => {
                     <div>
                         <div className="flex items-center gap-x-2">
                             <IconBadge icon={ListChecks} />
-                            <h2 className="text-xl">
+                            <h2 className="text-xl text-white">
                                 Course Chapter
                             </h2>
                         </div>
-                        <div>
+                        <div className="text-white">
                             TODO: Chapter
                         </div>
                     </div>
                     <div>
                         <div className="flex items-center gap-x-2">
                             <IconBadge icon={DollarSign}/>
-                            <h2 className="text-xl">
+                            <h2 className="text-xl text-white">
                                 Sell Your Course
                             </h2>
                         </div>
@@ -124,7 +124,7 @@ const CourseIdPage = async({ params } : { params:{courseId: string} }) => {
                     <div>
                         <div className="flex items-center gap-x-2">
                             <IconBadge icon={File}/>
-                            <h2 className="text-xl">
+                            <h2 className="text-xl text-white">
                                 Resources & Attachments
                             </h2>
                         </div>
