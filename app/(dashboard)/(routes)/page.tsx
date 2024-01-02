@@ -14,13 +14,24 @@ import SliderComponent from "../_components/slider-component";
 import BrandSlider from "../_components/brand-slider";
 import OurTeam from "../_components/grid";
 import FooterComponent from "../_components/footer";
+import Hero from "../../../assets/hero.png"
 
+const gradientStyle = {
+  background: `linear-gradient(0deg, rgba(0, 0, 0, 0.20) 25%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(90deg, #121416 29.27%, rgba(18, 20, 22, 0.00) 81.09%)`,
+};
+
+const imageStyle = {
+  backgroundImage: `url('../../../assets/hero.png')`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  backgroundPosition: 'right top',
+};
 export default function Home() {
   return (
     <>
     {/* Hero section start */}
-    <div className="md:container">
-    <div className="mx-auto flex text-white flex-col md:flex-row md:items-center md:justify-center p-6">
+    <div className="w-full" style={{...gradientStyle, ...imageStyle}}>
+    <div className="md:container mx-auto flex text-white flex-col md:flex-row md:items-center md:justify-center p-6">
       <div className="flex flex-col items-center lg:items-start w-full lg:w-2/4 mt-12">
           <h2 className="font text-4xl lg:text-5xl font-bold p-4 lg:p-0">Empowering Students <br /> with <span className="text-orange-500"> Their Most Vital <br /> Asset - Values </span>
           <span>
@@ -33,21 +44,24 @@ export default function Home() {
           </p>
 
           <Link href="/get-mentor">
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-500 gap-2 mt-10">
+            <Button size="lg" className="bg-orange-500 hover:bg-orange-500 gap-2 mt-10 mb-20">
               Get Instant Mentor
             </Button>
           </Link>
       </div>
-      <div className="flex flex-col justify-center align-middle items-center md:align-top md:items-start md:justify-start w-full lg:w-2/4 lg:ml-6 mt-12">
-        Home
+      <div className="md:flex w-full lg:w-2/4 lg:ml-6 mt-0 hidden">
+        {/* <Image src={Hero} alt="heroImg" height={706} width={1358}/> */}
+        <div style={imageStyle}></div>
       </div>
+      {/* <div className="" style={HomeStyle}> */}
+      {/* </div> */}
     </div>
     </div>
 
     {/* Hero section end */}
 
     {/* Who we are section start */}
-    <div className="mt-24 lg:h-[38rem] h-[55rem] w-full bg-[#000000]">
+    <div className="mt-0 lg:h-[38rem] h-[55rem] w-full bg-[#000000]">
     <div className="mx-auto flex text-white flex-col md:container md:flex-row md:items-center w-full md:justify-center p-6">
       <div className="text-white flex flex-col">
         <div className="text-center m-auto">
