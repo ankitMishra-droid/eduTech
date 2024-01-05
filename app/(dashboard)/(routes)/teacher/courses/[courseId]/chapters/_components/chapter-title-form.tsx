@@ -16,26 +16,27 @@ import {
     FormItem,
     FormMessage
 } from "@/components/ui/form"
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Course } from "@prisma/client";
-import { Combobox } from "@/components/ui/combobox";
 
-interface CategoryFormProps {
-    initialData: Course;
+interface ChapterTitleFormProps {
+    initialData: {
+        title: string
+    },
     courseId: string;
-    options: { label: string; value: string; }[];
+    chapterId: string;
 }
 
 const formSchema = z.object({
-    categoryId: z.string().min(1)
+    title: z.string().min(3)
 })
 
-export const CategoryForm = ({
+
+export const ChapterTitleForm = ({
     initialData,
     courseId,
-    options
-}: CategoryFormProps) => {
+    chapterId
+}: ChapterTitleFormProps) => {
 
     const router = useRouter()
 
@@ -44,46 +45,39 @@ export const CategoryForm = ({
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues:{
-            categoryId: initialData?.categoryId || ""
-        }
+        defaultValues: initialData
     });
 
     const { isSubmitting, isValid } = form.formState;
 
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
         try {
-            await axios.patch(`/api/courses/${courseId}`, values)
-            toast.success("Course category Updated")
+            await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values)
+            toast.success("Chapter Title Updated")
             toggleEdit()
             router.refresh()
         } catch {
             toast.error("somthing went wrong")
         }
     }
-
-    const selectedOptions = options.find((option) => option.value === initialData.categoryId);
     return(
         <div className="mt-6 border bg-slate-100 rounded-md p-4">
             <div className="font-medium flex items-center justify-between">
-                Course category
+                Chapter Title
             <Button variant="ghost" onClick={toggleEdit}>
             {isEditting ? (<>Canel</>):(
                 <>
                     <Pencil className="h-4 w-4 mr-2" />
-                    Edit category
+                    Edit title
                 </>
             )}
             </Button>
             </div>
 
             {!isEditting && (
-                <p className={cn(
-                    "text-sm mt-2",
-                    !initialData.categoryId && "text-slate-500 italic"
-                )}>
-                {selectedOptions?.label || "No category"}
-                </p>
+            <p className="text-sm mt-2">
+            {initialData.title}
+            </p>
             )}
 
             {
@@ -93,13 +87,14 @@ export const CategoryForm = ({
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-4">
                             <FormField 
                             control={form.control}
-                            name="categoryId"
+                            name="title"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Combobox
-                                          options={options}
-                                          {...field}
+                                        <Input 
+                                        disabled={isSubmitting}
+                                        placeholder="e.g. 'Introduction to the video"
+                                        {...field}
                                         />
                                     </FormControl>
                                     <FormMessage />

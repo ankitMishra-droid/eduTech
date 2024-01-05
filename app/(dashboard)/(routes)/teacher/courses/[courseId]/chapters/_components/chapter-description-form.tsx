@@ -18,24 +18,27 @@ import {
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Course } from "@prisma/client";
-import { Combobox } from "@/components/ui/combobox";
+import { Textarea } from "@/components/ui/textarea";
+import { Chapter } from "@prisma/client";
+import { Editor } from "@/components/editor";
+import { Preview } from "@/components/preview";
 
-interface CategoryFormProps {
-    initialData: Course;
+interface ChapterDescriptionFormProps {
+    initialData: Chapter;
     courseId: string;
-    options: { label: string; value: string; }[];
+    chapterId: string;
 }
 
 const formSchema = z.object({
-    categoryId: z.string().min(1)
+    description: z.string().min(3)
 })
 
-export const CategoryForm = ({
+
+export const ChapterDescriptionForm = ({
     initialData,
     courseId,
-    options
-}: CategoryFormProps) => {
+    chapterId
+}: ChapterDescriptionFormProps) => {
 
     const router = useRouter()
 
@@ -45,7 +48,7 @@ export const CategoryForm = ({
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues:{
-            categoryId: initialData?.categoryId || ""
+            description: initialData?.description || ""
         }
     });
 
@@ -53,37 +56,40 @@ export const CategoryForm = ({
 
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
         try {
-            await axios.patch(`/api/courses/${courseId}`, values)
-            toast.success("Course category Updated")
+            await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values)
+            toast.success("Chapter description Updated")
             toggleEdit()
             router.refresh()
         } catch {
             toast.error("somthing went wrong")
         }
     }
-
-    const selectedOptions = options.find((option) => option.value === initialData.categoryId);
     return(
         <div className="mt-6 border bg-slate-100 rounded-md p-4">
             <div className="font-medium flex items-center justify-between">
-                Course category
+                Chapter Description
             <Button variant="ghost" onClick={toggleEdit}>
             {isEditting ? (<>Canel</>):(
                 <>
                     <Pencil className="h-4 w-4 mr-2" />
-                    Edit category
+                    Edit Description
                 </>
             )}
             </Button>
             </div>
 
             {!isEditting && (
-                <p className={cn(
+                <div className={cn(
                     "text-sm mt-2",
-                    !initialData.categoryId && "text-slate-500 italic"
+                    !initialData.description && "text-slate-500 italic"
                 )}>
-                {selectedOptions?.label || "No category"}
-                </p>
+                {!initialData.description && "No description"}
+                {initialData.description && (
+                    <Preview 
+                        value={initialData.description}
+                    />
+                )}
+                </div>
             )}
 
             {
@@ -93,13 +99,12 @@ export const CategoryForm = ({
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-4">
                             <FormField 
                             control={form.control}
-                            name="categoryId"
+                            name="description"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Combobox
-                                          options={options}
-                                          {...field}
+                                        <Editor 
+                                            {...field}
                                         />
                                     </FormControl>
                                     <FormMessage />

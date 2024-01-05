@@ -105,7 +105,7 @@ export const AttachmentForm = ({
                                             {
                                                 deleting !== attachment.id && (
                                                     <button onClick={() => onDelete(attachment.id)}>
-                                                    <div>
+                                                    <div className="">
                                                         <X className="h-4 w-4"/>
                                                     </div>
                                                     </button>

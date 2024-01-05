@@ -5,9 +5,6 @@ import frontWho from "../../../assets/images/Rectangle 592.png"
 import playButton from "../../../assets/images/play (1) 1.png"
 import circle from "../../../assets/images/circle.svg"
 import right from "../../../assets/images/right.svg"
-import halfCircle from "../../../assets/images/Ellipse 7.png"
-import man from "../../../assets/images/man.png"
-import women from "../../../assets/images/woman.png"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SliderComponent from "../_components/slider-component";

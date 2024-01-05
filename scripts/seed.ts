@@ -12,7 +12,8 @@ async function main(){
                 { name : "Photography" },
                 { name : "Accounting" },
                 { name : "Filming" },
-                { name : "Engimeering" },
+                { name : "Engineering" },
+                // { name : "Drama" },
             ]
         })
         console.log("Success")
